@@ -1,15 +1,84 @@
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
+:root{
+    font-family: 'Open Sans', sans-serif;
+    --headerColor: #3c3c3c;
+    --hoverColor: #014142;
+    --optionColor: #2b2b2b;
+}
+
 html, body{
-    width: 100%;
     height: 100%;
+    width: 100%;
+}
+
+header{
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    background-color: var(--headerColor);
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+header ul{
+    list-style-type: none;
+    display: flex;
+    padding: 0 5vw;
+}
+
+header ul li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%; 
+    transition: all .25s ease-in-out;
+}
+
+header ul li:hover{
+    cursor: pointer;
+    background-color: var(--hoverColor);
+}
+
+/* styling the hidden slide options */
+
+header ul .option{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    background-color: var(--optionColor);
+    top: 6.5vh;
+    left: 0;
+}
+
+header ul .option-header{
+    width: 90%;
+    text-align: center;
+    font-size: .83rem;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #fff;
 }
 
 canvas{
     display: block;
-    background-color: white;
+    position: absolute;
+    left: 0;
 }
+
+.bg-canvas{z-index: 0}
+
+.main-canvas{z-index: 1}

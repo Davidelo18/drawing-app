@@ -6,10 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>drawSomeCrap</title>
 
+    <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/fontello.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 </head>
 <body>
-    <canvas id="myCanvas"></canvas>
+    <header role="navigation" id="toolbar" class="toolbar">
+        <ul>
+            <li>
+                <i class="icon-bucket"></i>
+                <section id="changePaintColor" class="option">
+                    <h1 class="option-header">Change paint color</h1>
+                    <label><input id="paintColorChange" type="text"></label>
+                    <button id="chColor" type="button"></button>
+                </section>
+            </li>
+        </ul>
+    </header>
+    <canvas id="background" class="bg-canvas"></canvas>
+    <canvas id="myCanvas" class="main-canvas"></canvas>
+
     <script src="scripts/canvas.js"></script>
 </body>
 </html>
