@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     myCanvas.height = backgroundCanvas.height = document.body.clientHeight;
     myCanvas.width = backgroundCanvas.width = document.body.clientWidth;
 
-    bgContx.fillStyle = '#ffffff';
+    bgContx.fillStyle = '#1b4589';
     bgContx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
 
     canvContx.drawImage(backgroundCanvas, 0, 0);
@@ -58,19 +58,49 @@ window.addEventListener('DOMContentLoaded', () => {
     **  ----- MENU OPTIONS SECTION -----
     */
 
-    const colorToChange = document.getElementById('bgColorChange');
-    const chColorBtn = document.getElementById('chColor');
-    setInputFilter(colorToChange, function(value) {
-        return /^[0-9a-f]*$/i.test(value); 
+    // catch the option buttons and sections
+    const optionBtns = document.querySelectorAll('.option-btn');
+    const sections = document.querySelectorAll('.option');
+    const visible = [false, false, false];
+
+    optionBtns.forEach((option, i, optionArray) => {
+        option.addEventListener('click', () => {
+            visible.forEach((value, j, theArray) => {
+                if (theArray[j] == true && j != i) {
+                    optionArray[j].classList.remove('option-active');
+                    theArray[j] = false;
+                    sections[j].style.transform = "scale(1, 0)";
+                }
+            });
+
+            option.classList.toggle('option-active');
+        
+            if (!visible[i]) {
+                visible[i] = true;
+                sections[i].style.transform = "scale(1, 1)";
+                console.log(visible);
+            } else {
+                visible[i] = false;
+                sections[i].style.transform = "scale(1, 0)";
+                console.log(visible);
+            }
+        });
+    });
+
+    const bgColorInput = document.getElementById('bgColorInput'); // input
+    const chColorBtn = document.getElementById('chColor'); // submit btn
+
+    // allow only hexadecimal values 
+    setInputFilter(bgColorInput, function (value) {
+        return /^[0-9a-f]*$/i.test(value);
     });
 
     chColorBtn.addEventListener('click', () => {
-        let value = colorToChange.value;
+        let value = bgColorInput.value;
         if (value.length < 6) return;
         else if (value.length == 6) {
             bgContx.fillStyle = `#${value}`;
             bgContx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
-
             canvContx.drawImage(backgroundCanvas, 0, 0);
         }
     });
