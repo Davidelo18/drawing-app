@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // initialize the canvas
     const myCanvas = document.getElementById('myCanvas');
     const backgroundCanvas = document.getElementById('background');
-    
+
     const canvContx = myCanvas.getContext('2d');
     const bgContx = backgroundCanvas.getContext('2d');
 
@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
         canvContx.fillStyle = paintColor;
         canvContx.lineTo(e.clientX, e.clientY);
         canvContx.stroke();
-        canvContx.beginPath();        
+        canvContx.beginPath();
         canvContx.arc(e.clientX, e.clientY, radius, 0, Math.PI * 2);
         canvContx.fill();
 
@@ -58,16 +58,41 @@ window.addEventListener('DOMContentLoaded', () => {
     **  ----- MENU OPTIONS SECTION -----
     */
 
-    const colorToChange = document.getElementById('paintColorChange');
+    const colorToChange = document.getElementById('bgColorChange');
     const chColorBtn = document.getElementById('chColor');
+    setInputFilter(colorToChange, function(value) {
+        return /^[0-9a-f]*$/i.test(value); 
+    });
+
     chColorBtn.addEventListener('click', () => {
         let value = colorToChange.value;
-        if(value.length < 6) return;
-        else if(value.length == 6){
+        if (value.length < 6) return;
+        else if (value.length == 6) {
             bgContx.fillStyle = `#${value}`;
             bgContx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
 
             canvContx.drawImage(backgroundCanvas, 0, 0);
         }
     });
+
+    /* 
+    **  ----- OTHER -----
+    */
+
+    // Function to filter the inputs
+    // Restricts input for the given textbox to the given inputFilter.
+    function setInputFilter(textbox, inputFilter) {
+        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+            textbox.addEventListener(event, function () {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                }
+            });
+        });
+    }
 });
