@@ -96,12 +96,26 @@ header ul .option-header{
     border-bottom: 1px dashed #fff;
 }
 
+/* styling the color preview divs */
 header ul .result-color{
     width: 80%;
     height: 20px;
     margin: 5px auto;
     border: 1px solid var(--optionColor);
     border-radius: 6px; 
+}
+
+/* styling the numeric preview divs */
+header ul .result-number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 25px;
+    background-color: var(--optionColor);
+    border-radius: 6px;
+    font-size: .7rem;
+    color: black;
 }
 
 /* --- CANVASES --- */
@@ -114,3 +128,14 @@ canvas{
 
 .bg-canvas{z-index: 0} /* background color */
 .main-canvas{z-index: 1}
+
+/* canvas to show the size of the paint */
+.paint-size-canvas{
+    box-sizing: content-box;
+    position: static;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border: 5px solid #fff;
+    border-radius: 6px;
+}

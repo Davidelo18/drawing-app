@@ -78,11 +78,9 @@ window.addEventListener('DOMContentLoaded', () => {
             if (!visible[i]) {
                 visible[i] = true;
                 sections[i].style.transform = "scale(1, 1)";
-                console.log(visible);
             } else {
                 visible[i] = false;
                 sections[i].style.transform = "scale(1, 0)";
-                console.log(visible);
             }
         });
     });
@@ -90,8 +88,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // option 1 - change background color
 
     const bgColorRanges = document.querySelectorAll('.bg-color-range'); // ranges
-    const resultDiv = document.getElementById('resultColor');
-    const chColorBtn = document.getElementById('chColor'); // submit btn
+    const resultBgColorDiv = document.getElementById('resultColor'); // div with the color preview
+    const chBgColorBtn = document.getElementById('chColor'); // submit btn
 
     bgColorRanges.forEach((range, i, theArray) => {
         range.addEventListener('input', () => {
@@ -100,16 +98,45 @@ window.addEventListener('DOMContentLoaded', () => {
             let blue = theArray[2].value;
 
             let color = `rgb(${red}, ${green}, ${blue})`;
-            resultDiv.style.backgroundColor = color;
+            resultBgColorDiv.style.backgroundColor = color;
         });
     });
 
-    chColorBtn.addEventListener('click', () => {
-        const style = window.getComputedStyle(resultDiv);
+    chBgColorBtn.addEventListener('click', () => {
+        const style = window.getComputedStyle(resultBgColorDiv);
         bgContx.fillStyle = style.getPropertyValue('background-color');
         bgContx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
         canvContx.drawImage(backgroundCanvas, 0, 0);
     });    
+
+    // option 2 - change paint color
+
+    // option 3 - change paint size
+
+    const paintSize = document.getElementById('paintSize'); // range
+    const paintSizeCanvas = document.getElementById('paintSizeCanvas'); // canvas to preview the size
+    const resultPaintSize = document.getElementById('resultPaintSize'); // preview the number of size
+    const psContx = paintSizeCanvas.getContext('2d');
+    const chPaintSizeBtn = document.getElementById('chPaintSize'); // submit btn
+
+    paintSizeCanvas.width = 60;
+    paintSizeCanvas.height = 60;
+
+    paintSize.addEventListener('input', () => {
+        let radiusPreview = paintSize.value;
+        
+        resultPaintSize.textContent = `${radiusPreview}px`;
+        psContx.clearRect(0, 0, paintSizeCanvas.width, paintSizeCanvas.height);
+        psContx.beginPath();
+        psContx.arc(paintSizeCanvas.width / 2, paintSizeCanvas.height / 2, radiusPreview, 0, Math.PI * 2);
+        psContx.fill();
+    });
+
+    chPaintSizeBtn.addEventListener('click', () => {
+        radius = paintSize.value;
+        lineWidth = radius * 2;
+        canvContx.lineWidth = lineWidth;
+    });
 
     /* 
     **  ----- OTHER -----
