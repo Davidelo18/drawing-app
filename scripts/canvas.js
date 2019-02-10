@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
             });
 
             option.classList.toggle('option-active');
-        
+
             if (!visible[i]) {
                 visible[i] = true;
                 sections[i].style.transform = "scale(1, 1)";
@@ -87,42 +87,31 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const bgColorInput = document.getElementById('bgColorInput'); // input
+    // option 1 - change background color
+
+    const bgColorRanges = document.querySelectorAll('.bg-color-range'); // ranges
+    const resultDiv = document.getElementById('resultColor');
     const chColorBtn = document.getElementById('chColor'); // submit btn
 
-    // allow only hexadecimal values 
-    setInputFilter(bgColorInput, function (value) {
-        return /^[0-9a-f]*$/i.test(value);
+    bgColorRanges.forEach((range, i, theArray) => {
+        range.addEventListener('input', () => {
+            let red = theArray[0].value;
+            let green = theArray[1].value;
+            let blue = theArray[2].value;
+
+            let color = `rgb(${red}, ${green}, ${blue})`;
+            resultDiv.style.backgroundColor = color;
+        });
     });
 
     chColorBtn.addEventListener('click', () => {
-        let value = bgColorInput.value;
-        if (value.length < 6) return;
-        else if (value.length == 6) {
-            bgContx.fillStyle = `#${value}`;
-            bgContx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
-            canvContx.drawImage(backgroundCanvas, 0, 0);
-        }
-    });
+        const style = window.getComputedStyle(resultDiv);
+        bgContx.fillStyle = style.getPropertyValue('background-color');
+        bgContx.fillRect(0, 0, backgroundCanvas.width, backgroundCanvas.height);
+        canvContx.drawImage(backgroundCanvas, 0, 0);
+    });    
 
     /* 
     **  ----- OTHER -----
     */
-
-    // Function to filter the inputs
-    // Restricts input for the given textbox to the given inputFilter.
-    function setInputFilter(textbox, inputFilter) {
-        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
-            textbox.addEventListener(event, function () {
-                if (inputFilter(this.value)) {
-                    this.oldValue = this.value;
-                    this.oldSelectionStart = this.selectionStart;
-                    this.oldSelectionEnd = this.selectionEnd;
-                } else if (this.hasOwnProperty("oldValue")) {
-                    this.value = this.oldValue;
-                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-                }
-            });
-        });
-    }
 });

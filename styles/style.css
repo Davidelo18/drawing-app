@@ -15,6 +15,10 @@ html, body{
     width: 100%;
 }
 
+label{
+    font-size: .9rem;
+}
+
 header{
     z-index: 100;
     display: flex;
@@ -75,7 +79,7 @@ header ul .option{
     top: 6.5vh;
     left: 0;
     width: 200px;
-    height: 100px;
+    height: 240px;
     padding: 10px 0;
     transform: scale(1, 0);
     transform-origin: top;
@@ -90,6 +94,14 @@ header ul .option-header{
     font-size: .83rem;
     padding-bottom: 5px;
     border-bottom: 1px dashed #fff;
+}
+
+header ul .result-color{
+    width: 80%;
+    height: 20px;
+    margin: 5px auto;
+    border: 1px solid var(--optionColor);
+    border-radius: 6px; 
 }
 
 /* --- CANVASES --- */

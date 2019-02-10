@@ -15,32 +15,35 @@
     <header role="navigation" id="toolbar" class="toolbar">
         <ul>
             <li>
-                <button id="chBgColorBtn" class="option-btn"><i class="icon-bucket"></i></button>
-                <section id="chBgColorSec" class="option">
+                <button class="option-btn"><i class="icon-bucket"></i></button>
+                <section class="option">
                     <h1 class="option-header">Change background color</h1>
-                    <label><input id="bgColorInput" type="text" maxlength="6"></label>
+                    <label for="red">Red</label><input type="range" name="red" class="bg-color-range" id="red" min="0" max="255">
+                    <label for="green">Green</label><input type="range" name="green" class="bg-color-range" id="green" min="0" max="255">
+                    <label for="blue">Blue</label><input type="range" name="blue" class="bg-color-range" id="blue" min="0" max="255">
+                    <section id="resultColor" class="result-color"></section>
                     <button id="chColor" type="button">Change</button>
                 </section>
             </li>
             <li>
-                <button id="chPaintColorBtn" class="option-btn"><i class="icon-brush"></i></button>
-                <section id="chBgColorSec" class="option">
+                <button class="option-btn"><i class="icon-brush"></i></button>
+                <section class="option">
                     <h1 class="option-header">Change paint color</h1>
                     <label><input id="bgColorInput" type="text" maxlength="6"></label>
                     <button id="chColor" type="button">Change</button>
                 </section>
             </li>
             <li>
-                <button id="chSizeBtn" class="option-btn"><i class="icon-circle"></i></button>
-                <section id="chBgColorSec" class="option">
+                <button class="option-btn"><i class="icon-circle"></i></button>
+                <section class="option">
                     <h1 class="option-header">Change paint size</h1>
                     <label><input id="bgColorInput" type="text" maxlength="6"></label>
                     <button id="chColor" type="button">Change</button>
                 </section>
             </li>
             <li>
-                <button id="downloadBtn" class="option-btn"><i class="icon-download"></i></button>
-                <section id="chBgColorSec" class="option">
+                <button class="option-btn"><i class="icon-download"></i></button>
+                <section class="option">
                     <h1 class="option-header">Change background color</h1>
                     <label><input id="bgColorInput" type="text" maxlength="6"></label>
                     <button id="chColor" type="button">Change</button>
