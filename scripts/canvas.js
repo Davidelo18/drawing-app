@@ -22,6 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // bool if user is painting now
     let radius = 5;
     let lineWidth = radius * 2;
+    let paintColor = '#000000';
     let drawing = false;
 
     canvContx.lineWidth = lineWidth;
@@ -38,6 +39,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function draw(e) {
         if (!drawing) return;
+        canvContx.fillStyle = paintColor;
+        canvContx.strokeStyle = paintColor;
         canvContx.lineTo(e.clientX, e.clientY);
         canvContx.stroke();
         canvContx.beginPath();
@@ -126,8 +129,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     chPtColorBtn.addEventListener('click', () => {
         const style = window.getComputedStyle(resultPtColorDiv);
-        canvContx.fillStyle = style.getPropertyValue('background-color');
-        canvContx.strokeStyle = style.getPropertyValue('background-color');
+        paintColor = style.getPropertyValue('background-color');
     });
 
     // option 3 - change paint size
@@ -160,15 +162,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // option 1 - eraser
 
+    const ereserBtn = document.getElementById('eraser-btn');
+    let isErasing = false;
+
+    ereserBtn.addEventListener('click', () => {
+        ereserBtn.classList.toggle('option-active');
+        if(!isErasing){
+            tmpPaintC = paintColor;
+            paintColor = bgContx.fillStyle;
+            isErasing = true;
+        } else{
+            paintColor = tmpPaintC;
+            isErasing = false;
+        }
+    });
+
     // option 2 - undo
 
     // option 3 - redo
 
     // option 4 - clear the canvas
 
+    const resetBtn = document.getElementById('reset-btn');
+    resetBtn.addEventListener('click', () => {
+        canvContx.clearRect(0, 0, myCanvas.width, myCanvas.height);
+    });
+
     // option 5 - download the image
 
-    const downloadBtn = document.getElementById('btn-download');
+    const downloadBtn = document.getElementById('download-btn');
     downloadBtn.addEventListener('click', () => {
         const dataUrl = myCanvas.toDataURL('image/png');
         downloadBtn.href = dataUrl;
