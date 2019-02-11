@@ -28,7 +28,7 @@
             <li>
                 <button class="option-btn"><i class="icon-brush"></i></button>
                 <section class="option">
-                    <h1 class="option-header">Change background color</h1>
+                    <h1 class="option-header">Change paint color</h1>
                     <label for="redPt">Red</label><input type="range" name="redPt" class="pt-color-range" id="redPt" min="0" max="255">
                     <label for="greenPt">Green</label><input type="range" name="greenPt" class="pt-color-range" id="greenPt" min="0" max="255">
                     <label for="bluePt">Blue</label><input type="range" name="bluePt" class="pt-color-range" id="bluePt" min="0" max="255">
@@ -45,7 +45,19 @@
                     <canvas id="paintSizeCanvas" class="paint-size-canvas"></canvas>
                 </section>
             </li>
+            <li>
+                <button class="click-option-btn"><i class="icon-eraser"></i></button>
+            </li>
+            <li>
+                <button class="click-option-btn"><i class="icon-ccw"></i></button>
+            </li>
+            <li>
+                <button class="click-option-btn"><i class="icon-cw"></i></button>
+            </li>
             <li aria-hidden="true" style="flex: 1"></li>
+            <li>
+                <button class="click-option-btn"><i class="icon-cancel"></i></button>
+            </li>
             <li>
                 <a href="#" class="save-img-btn" id="btn-download" download="my-image.png"><i class="icon-download"></i></a>
             </li>

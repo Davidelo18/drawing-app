@@ -62,6 +62,7 @@ header button{background-color: var(--optionColor)}
 
 /* single button (not li!) in the nav */
 header ul .option-btn,
+header ul .click-option-btn,
 header ul .save-img-btn{
     display: flex;
     align-items: center;
@@ -75,6 +76,7 @@ header ul .save-img-btn{
 
 header ul .option-btn:hover,
 .option-active,
+header ul .click-option-btn:hover,
 header ul .save-img-btn:hover{
     cursor: pointer;
     background-color: var(--hoverColor);

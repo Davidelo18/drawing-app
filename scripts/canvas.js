@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
     myCanvas.addEventListener('mouseup', stopDrawing);
 
     /* 
-    **  ----- MENU OPTIONS SECTION -----
+    **  ----- MENU OPTIONS WITH HIDDEN SECTIONS -----
     */
 
     // catch the option buttons and sections
@@ -154,7 +154,19 @@ window.addEventListener('DOMContentLoaded', () => {
         canvContx.lineWidth = lineWidth;
     });
 
-    // option 4 - download the image
+    /* 
+    **  ----- MENU CLICK OPTIONS -----
+    */
+
+    // option 1 - eraser
+
+    // option 2 - undo
+
+    // option 3 - redo
+
+    // option 4 - clear the canvas
+
+    // option 5 - download the image
 
     const downloadBtn = document.getElementById('btn-download');
     downloadBtn.addEventListener('click', () => {

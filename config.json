@@ -29,6 +29,30 @@
       "css": "circle",
       "code": 61713,
       "src": "fontawesome"
+    },
+    {
+      "uid": "f9c3205df26e7778abac86183aefdc99",
+      "css": "ccw",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "bc71f4c6e53394d5ba46b063040014f1",
+      "css": "cw",
+      "code": 59395,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "ebc57fa8400e4ede049ac5dc665210e1",
+      "css": "eraser",
+      "code": 61741,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "5211af474d3a9848f67f945e2ccaf143",
+      "css": "cancel",
+      "code": 59396,
+      "src": "fontawesome"
     }
   ]
 }

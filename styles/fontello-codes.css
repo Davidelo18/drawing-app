@@ -1,5 +1,9 @@
 
 .icon-bucket:before { content: '\e800'; } /* '' */
 .icon-brush:before { content: '\e801'; } /* '' */
+.icon-ccw:before { content: '\e802'; } /* '' */
+.icon-cw:before { content: '\e803'; } /* '' */
+.icon-cancel:before { content: '\e804'; } /* '' */
 .icon-download:before { content: '\f02e'; } /* '' */
 .icon-circle:before { content: '\f111'; } /* '' */
+.icon-eraser:before { content: '\f12d'; } /* '' */
