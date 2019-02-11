@@ -15,9 +15,17 @@ html, body{
     width: 100%;
 }
 
-label{
-    font-size: .9rem;
+/* set some my default styles */
+
+label{font-size: .9rem}
+
+a{
+    text-decoration: none;
+    background-color: var(--optionColor);
+    color: #000000;
 }
+
+/* actual styling the site */
 
 header{
     z-index: 100;
@@ -35,6 +43,7 @@ header{
 header ul{
     list-style-type: none;
     display: flex;
+    width: 100%;
     padding: 0 5vw;
 }
 
@@ -52,7 +61,8 @@ header ul li{
 header button{background-color: var(--optionColor)}
 
 /* single button (not li!) in the nav */
-header ul .option-btn{
+header ul .option-btn,
+header ul .save-img-btn{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,7 +74,8 @@ header ul .option-btn{
 }
 
 header ul .option-btn:hover,
-.option-active{
+.option-active,
+header ul .save-img-btn:hover{
     cursor: pointer;
     background-color: var(--hoverColor);
 }

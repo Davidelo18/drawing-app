@@ -154,6 +154,14 @@ window.addEventListener('DOMContentLoaded', () => {
         canvContx.lineWidth = lineWidth;
     });
 
+    // option 4 - download the image
+
+    const downloadBtn = document.getElementById('btn-download');
+    downloadBtn.addEventListener('click', () => {
+        const dataUrl = myCanvas.toDataURL('image/png');
+        downloadBtn.href = dataUrl;
+    });
+
     /* 
     **  ----- OTHER -----
     */
