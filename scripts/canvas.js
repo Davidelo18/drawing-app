@@ -35,6 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function stopDrawing() {
         drawing = false;
         canvContx.beginPath(); // clear the drew lines
+        pushChange();
     }
 
     function draw(e) {
@@ -179,7 +180,37 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // option 2 - undo
 
+    const changesArray = new Array();
+    changesArray.push(myCanvas.toDataURL('image/png'));
+    let step = 0; 
+
+    function pushChange() {
+        step++;        
+        if(step < changesArray.length) changesArray.length = step;
+        changesArray[step] = myCanvas.toDataURL('image/png');
+    }
+
+    const undoBtn = document.getElementById('undo-btn');
+    undoBtn.addEventListener('click', () => {
+        if(step > 0){
+            step--;
+            let image = new Image();
+            image.src = changesArray[step];
+            image.onload = () => {canvContx.drawImage(image, 0, 0)}
+        }
+    });
+
     // option 3 - redo
+
+    const redoBtn = document.getElementById('redo-btn');
+    redoBtn.addEventListener('click', () => {
+        if(step < changesArray.length - 1){
+            step++;
+            let image = new Image();
+            image.src = changesArray[step];
+            image.onload = () => {canvContx.drawImage(image, 0, 0)}
+        }
+    });
 
     // option 4 - clear the canvas
 
