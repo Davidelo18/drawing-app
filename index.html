@@ -18,19 +18,22 @@
                 <button class="option-btn"><i class="icon-bucket"></i></button>
                 <section class="option">
                     <h1 class="option-header">Change background color</h1>
-                    <label for="red">Red</label><input type="range" name="red" class="bg-color-range" id="red" min="0" max="255">
-                    <label for="green">Green</label><input type="range" name="green" class="bg-color-range" id="green" min="0" max="255">
-                    <label for="blue">Blue</label><input type="range" name="blue" class="bg-color-range" id="blue" min="0" max="255">
-                    <section id="resultColor" class="result-color"></section>
-                    <button id="chColor" type="button">Change</button>
+                    <label for="redBg">Red</label><input type="range" name="redBg" class="bg-color-range" id="redBg" min="0" max="255">
+                    <label for="greenBg">Green</label><input type="range" name="greenBg" class="bg-color-range" id="greenBg" min="0" max="255">
+                    <label for="blueBg">Blue</label><input type="range" name="blueBg" class="bg-color-range" id="blueBg" min="0" max="255">
+                    <section id="resultBgColor" class="result-color"></section>
+                    <button id="chBgColor" type="button">Change</button>
                 </section>
             </li>
             <li>
                 <button class="option-btn"><i class="icon-brush"></i></button>
                 <section class="option">
-                    <h1 class="option-header">Change paint color</h1>
-                    <label><input id="bgColorInput" type="text" maxlength="6"></label>
-                    <button id="chColor" type="button">Change</button>
+                    <h1 class="option-header">Change background color</h1>
+                    <label for="redPt">Red</label><input type="range" name="redPt" class="pt-color-range" id="redPt" min="0" max="255">
+                    <label for="greenPt">Green</label><input type="range" name="greenPt" class="pt-color-range" id="greenPt" min="0" max="255">
+                    <label for="bluePt">Blue</label><input type="range" name="bluePt" class="pt-color-range" id="bluePt" min="0" max="255">
+                    <section id="resultPtColor" class="result-color"></section>
+                    <button id="chPtColor" type="button">Change</button>
                 </section>
             </li>
             <li>
@@ -40,7 +43,6 @@
                     <label for="paintSize"></label><input type="range" name="paintSize" id="paintSize" min="1" max="30">
                     <section id="resultPaintSize" class="result-number"></section>
                     <canvas id="paintSizeCanvas" class="paint-size-canvas"></canvas>
-                    <button id="chPaintSize" type="button">Change</button>
                 </section>
             </li>
             <li>

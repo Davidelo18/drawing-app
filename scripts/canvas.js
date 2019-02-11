@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
     // bool if user is painting now
     let radius = 5;
     let lineWidth = radius * 2;
-    let paintColor = '#000000';
     let drawing = false;
 
     canvContx.lineWidth = lineWidth;
@@ -39,7 +38,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function draw(e) {
         if (!drawing) return;
-        canvContx.fillStyle = paintColor;
         canvContx.lineTo(e.clientX, e.clientY);
         canvContx.stroke();
         canvContx.beginPath();
@@ -88,8 +86,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // option 1 - change background color
 
     const bgColorRanges = document.querySelectorAll('.bg-color-range'); // ranges
-    const resultBgColorDiv = document.getElementById('resultColor'); // div with the color preview
-    const chBgColorBtn = document.getElementById('chColor'); // submit btn
+    const resultBgColorDiv = document.getElementById('resultBgColor'); // div with the color preview
+    const chBgColorBtn = document.getElementById('chBgColor'); // submit btn
 
     bgColorRanges.forEach((range, i, theArray) => {
         range.addEventListener('input', () => {
@@ -111,13 +109,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // option 2 - change paint color
 
+    const ptColorRanges = document.querySelectorAll('.pt-color-range'); // ranges
+    const resultPtColorDiv = document.getElementById('resultPtColor'); // div with the color preview
+    const chPtColorBtn = document.getElementById('chPtColor'); // submit btn
+
+    ptColorRanges.forEach((range, i, theArray) => {
+        range.addEventListener('input', () => {
+            let red = theArray[0].value;
+            let green = theArray[1].value;
+            let blue = theArray[2].value;
+
+            let color = `rgb(${red}, ${green}, ${blue})`;
+            resultPtColorDiv.style.backgroundColor = color;
+        });
+    });
+
+    chPtColorBtn.addEventListener('click', () => {
+        const style = window.getComputedStyle(resultPtColorDiv);
+        canvContx.fillStyle = style.getPropertyValue('background-color');
+        canvContx.strokeStyle = style.getPropertyValue('background-color');
+    });
+
     // option 3 - change paint size
 
     const paintSize = document.getElementById('paintSize'); // range
     const paintSizeCanvas = document.getElementById('paintSizeCanvas'); // canvas to preview the size
     const resultPaintSize = document.getElementById('resultPaintSize'); // preview the number of size
     const psContx = paintSizeCanvas.getContext('2d');
-    const chPaintSizeBtn = document.getElementById('chPaintSize'); // submit btn
 
     paintSizeCanvas.width = 60;
     paintSizeCanvas.height = 60;
@@ -130,9 +148,7 @@ window.addEventListener('DOMContentLoaded', () => {
         psContx.beginPath();
         psContx.arc(paintSizeCanvas.width / 2, paintSizeCanvas.height / 2, radiusPreview, 0, Math.PI * 2);
         psContx.fill();
-    });
-
-    chPaintSizeBtn.addEventListener('click', () => {
+        
         radius = paintSize.value;
         lineWidth = radius * 2;
         canvContx.lineWidth = lineWidth;
